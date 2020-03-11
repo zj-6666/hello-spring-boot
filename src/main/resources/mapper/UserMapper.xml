@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funtl.hello.spring.boot.dao.UserMapper">
+
+	<select id="getUserList" resultType="user">
+		select * from smbms_user
+	</select>
+
+
+	<insert id="addUser" parameterType="User">
+		INSERT INTO smbms_user(userCode,userName,phone) VALUE(#{userCode},#{userName},#{phone})
+
+	</insert>
+	<!-- 根据id删除某个User信息 -->
+	<delete id="deleteUser" parameterType="User">
+        delete from smbms_user
+        where id = #{id}
+    </delete>
+
+	<!-- 根据id更新User信息 -->
+	<update id="updateUser" parameterType="User">
+		update smbms_user
+		<set>
+			<if test="name != null">
+				name = #{name},
+			</if>
+
+			<if test="age != null">
+				age = #{age},
+			</if>
+
+		</set>
+		where id = #{id}
+	</update>
+
+
+</mapper>

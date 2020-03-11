@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>表格</title>
+</head>
+<table border="1">
+    <tr>
+        <th>用户编码</th>
+        <th>用户名称</th>
+        <th>出生日期</th>
+        <th>手机</th>
+        <th>地址</th>
+        <th>创建者</th>
+        <th>创建时间</th>
+        <th>更新者</th>
+        <th>更新时间</th>
+        <th>操作一</th>
+        <th>操作二</th>
+        <th>操作三</th>
+    </tr>
+    <tr  th:each="list : ${list}" >
+        <td th:text="${list.userCode}"></td>
+        <td th:text="${list.userName}"></td>
+        <td th:text="${list.birthday}"></td>
+        <td th:text="${list.phone}"></td>
+        <td th:text="${list.address}"></td>
+        <td th:text="${list.createdBy}"></td>
+        <td th:text="${list.creationDate}"></td>
+        <td th:text="${list.modifyBy}"></td>
+        <td th:text="${list.modifyDate}"></td>
+        <td><a th:href="@{delete(id=${list.id})}">删除</a></td>
+        <td><a th:href="@{add(id=${list.id})}">添加</a></td>
+        <td><a th:href="@{update(id=${list.id})}">更新</a></td>
+    </tr>
+</table>
+
+<body>
